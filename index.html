@@ -232,7 +232,7 @@ async function geminiDecomposeClaim(claimText, apiKey) {
 
   if (!Array.isArray(parsed)) throw new Error('Gemini 응답이 배열 형식이 아닙니다.');
   return parsed.map(item => ({
-    text: [item.name ? `[${item.name}]` : '', item.text || '', item.meaning ? `\n💡 ${item.meaning}` : '', item.relation ? `\n🔗 ${item.relation}` : '', item.isFunctional ? '\n⚙️ [기능형 청구항]' : ''].filter(Boolean).join(' ').trim(),
+    text: (item.text || '').trim(),
     match: '',
     note: ''
   }));
